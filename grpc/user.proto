@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package user;
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string token = 1;
+    int32 id = 2;
+    string name = 3;
+    string email = 4;
+}
+
+message RegisterRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message RegisterResponse {
+    int32 id = 2;
+    string name = 3;
+    string email = 4;
+}
+
+message LogoutRequest {
+    string token = 1;
+}
+
+message LogoutResponse {
+    string message = 1;
+}
+
+message UpdateRequest {
+    string token = 1;
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message UpdateResponse {
+    int32 id = 2;
+    string name = 3;
+    string email = 4;
+}
+
+service UserService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Logout(LogoutRequest) returns (LogoutResponse);
+}
+

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package member;
+
+message Member {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message MemberListRequest {
+}
+
+message MemberListResponse {
+    repeated Member members = 1;
+}
+
+message MemberGetRequest {
+    int32 id = 1;
+}
+
+message MemberGetResponse {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message MemberCreateRequest {
+    Member member = 1;
+}
+
+message MemberCreateResponse {
+    Member member = 1;
+}
+
+message MemberUpdateRequest {
+    Member member = 1;
+}
+
+message MemberUpdateResponse {
+    Member member = 1;
+}
+
+message MemberDeleteRequest {
+    int32 id = 1;
+}
+
+message MemberDeleteResponse {}
+
+
+service MemberService {
+    rpc List (MemberListRequest) returns (MemberListResponse) {}
+    rpc Get (MemberGetRequest) returns (MemberGetResponse) {}
+    rpc Create (MemberCreateRequest) returns (MemberCreateResponse) {}
+    rpc Update (MemberUpdateRequest) returns (MemberUpdateResponse) {}
+    rpc Delete (MemberDeleteRequest) returns (MemberDeleteResponse) {}
+}
+
+

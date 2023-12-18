@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package project;
+
+message Project {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+    int32 user_id = 4;
+    repeated int32 task_ids = 5;
+    repeated int32 user_ids = 6;
+}
+
+
+message ProjectListRequest {
+}
+
+message ProjectListResponse {
+    repeated Project projects = 1;
+}
+
+message ProjectGetRequest {
+    int32 id = 1;
+}
+
+message ProjectResponse {
+    Project project = 1;
+}
+
+message ProjectCreateRequest {
+    string title = 1;
+    string description = 2;
+}
+
+message ProjectCreateResponse {
+    Project project = 1;
+}
+
+message ProjectUpdateRequest {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+    repeated int32 task_ids = 4;
+}
+
+message ProjectUpdateResponse {
+    Project project = 1;
+}
+
+message ProjectDeleteRequest {
+    int32 id = 1;
+}
+
+message ProjectDeleteResponse {
+}
+
+message ProjectAddTaskRequest {
+    int32 project_id = 1;
+    int32 task_id = 2;
+}
+
+message ProjectAddTaskResponse {
+    Project project = 1;
+}
+
+message ProjectRemoveTaskRequest {
+    int32 project_id = 1;
+    int32 task_id = 2;
+}
+
+message ProjectRemoveTaskResponse {
+    Project project = 1;
+}
+
+message ProjectAddUserRequest {
+    int32 project_id = 1;
+    int32 user_id = 2;
+}
+
+message ProjectAddUserResponse {
+    Project project = 1;
+}
+
+message ProjectRemoveUserRequest {
+    int32 project_id = 1;
+    int32 user_id = 2;
+}
+
+message ProjectRemoveUserResponse {
+}
+
+message GenerateLinkProjectRequest {
+    int32 project_id = 1;
+}
+
+message GenerateLinkProjectResponse {
+    string link = 1;
+}
+
+service ProjectService {
+    rpc List (ProjectListRequest) returns (ProjectListResponse) {}
+    rpc Get (ProjectGetRequest) returns (ProjectResponse) {}
+    rpc Create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
+    rpc Update (ProjectUpdateRequest) returns (ProjectUpdateResponse) {}
+    rpc Delete (ProjectDeleteRequest) returns (ProjectDeleteResponse) {}
+    rpc AddTask (ProjectAddTaskRequest) returns (ProjectAddTaskResponse) {}
+    rpc RemoveTask (ProjectRemoveTaskRequest) returns (ProjectRemoveTaskResponse) {}
+    rpc AddUser (ProjectAddUserRequest) returns (ProjectAddUserResponse) {}
+    rpc RemoveUser (ProjectRemoveUserRequest) returns (ProjectRemoveUserResponse) {}
+    rpc GenerateLink (GenerateLinkProjectRequest) returns (GenerateLinkProjectResponse) {}
+}
+

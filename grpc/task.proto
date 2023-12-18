@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package task;
+
+message Task {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+    string status = 4;
+    string date = 5;
+    int32 project_id = 6;
+    repeated int32 user_ids = 7;
+}
+
+message TaskListRequest {
+}
+
+message TaskListResponse {
+    repeated Task tasks = 1;
+}
+
+message TaskRequest {
+    int32 id = 1;
+}
+
+message TaskResponse {
+    Task task = 1;
+}
+
+message TaskCreateRequest {
+    string title = 1;
+    string description = 2;
+    string status = 3;
+    string date = 4;
+    int32 project_id = 5;
+    repeated int32 user_ids = 6;
+}
+
+message TaskCreateResponse {
+    Task task = 1;
+}
+
+message TaskUpdateRequest {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+    string status = 4;
+    string date = 5;
+    repeated int32 user_ids = 6;
+}
+
+message TaskUpdateResponse {
+    Task task = 1;
+}
+
+message TaskDeleteRequest {
+    int32 id = 1;
+}
+
+message TaskDeleteResponse {
+}
+
+message TaskUpdateStatusRequest {
+    int32 id = 1;
+    string status = 2;
+}
+
+message TaskUpdateStatusResponse {
+    Task task = 1;
+}
+
+message TaskGetByProjectRequest {
+    int32 project_id = 1;
+}
+
+message TaskGetByProjectResponse {
+    repeated Task tasks = 1;
+}
+
+message TaskGetByUserRequest {
+    int32 user_id = 1;
+}
+
+message TaskGetByUserResponse {
+    repeated Task tasks = 1;
+}
+
+service TaskService {
+    rpc List(TaskListRequest) returns (TaskListResponse);
+    rpc Get(TaskRequest) returns (TaskResponse);
+    rpc Create(TaskCreateRequest) returns (TaskCreateResponse);
+    rpc Update(TaskUpdateRequest) returns (TaskUpdateResponse);
+    rpc Delete(TaskDeleteRequest) returns (TaskDeleteResponse);
+    rpc UpdateStatus(TaskUpdateStatusRequest) returns (TaskUpdateStatusResponse);
+    rpc GetByProject(TaskGetByProjectRequest) returns (TaskGetByProjectResponse);
+    rpc GetByUser(TaskGetByUserRequest) returns (TaskGetByUserResponse);
+}
+
+
+
