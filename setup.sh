@@ -11,13 +11,13 @@ python3 -m venv env
 # ./env/Scripts/alembic upgrade head
 
 # setup rest server
-# python3 -m venv ./rest/env
+python3 -m venv ./rest/env
 
 # activate env in windows
-# ./rest/env/Scripts/activate.bat
+./rest/env/Scripts/activate.bat
 
 # install requirements
-# ./rest/env/Scripts/pip install -e ./rest
+./rest/env/Scripts/pip install -e ./rest
 
 # setup grpc server
 cd grpc_server

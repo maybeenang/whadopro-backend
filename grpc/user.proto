@@ -28,6 +28,7 @@ message RegisterResponse {
 
 message LogoutRequest {
     string token = 1;
+    string email = 2;
 }
 
 message LogoutResponse {

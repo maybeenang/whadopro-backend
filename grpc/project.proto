@@ -30,6 +30,7 @@ message ProjectResponse {
 message ProjectCreateRequest {
     string title = 1;
     string description = 2;
+    int32 user_id = 3;
 }
 
 message ProjectCreateResponse {
@@ -97,6 +98,14 @@ message GenerateLinkProjectResponse {
     string link = 1;
 }
 
+message GetProjectByUserIdRequest {
+    int32 user_id = 1;
+}
+
+message GetProjectByUserIdResponse {
+    repeated Project projects = 1;
+}
+
 service ProjectService {
     rpc List (ProjectListRequest) returns (ProjectListResponse) {}
     rpc Get (ProjectGetRequest) returns (ProjectResponse) {}
@@ -108,5 +117,6 @@ service ProjectService {
     rpc AddUser (ProjectAddUserRequest) returns (ProjectAddUserResponse) {}
     rpc RemoveUser (ProjectRemoveUserRequest) returns (ProjectRemoveUserResponse) {}
     rpc GenerateLink (GenerateLinkProjectRequest) returns (GenerateLinkProjectResponse) {}
+    rpc GetByUserId (GetProjectByUserIdRequest) returns (GetProjectByUserIdResponse) {}
 }
 

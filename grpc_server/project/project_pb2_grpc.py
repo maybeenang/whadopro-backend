@@ -64,6 +64,11 @@ class ProjectServiceStub(object):
                 request_serializer=project__pb2.GenerateLinkProjectRequest.SerializeToString,
                 response_deserializer=project__pb2.GenerateLinkProjectResponse.FromString,
                 )
+        self.GetByUserId = channel.unary_unary(
+                '/project.ProjectService/GetByUserId',
+                request_serializer=project__pb2.GetProjectByUserIdRequest.SerializeToString,
+                response_deserializer=project__pb2.GetProjectByUserIdResponse.FromString,
+                )
 
 
 class ProjectServiceServicer(object):
@@ -129,6 +134,12 @@ class ProjectServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetByUserId(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ProjectServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -181,6 +192,11 @@ def add_ProjectServiceServicer_to_server(servicer, server):
                     servicer.GenerateLink,
                     request_deserializer=project__pb2.GenerateLinkProjectRequest.FromString,
                     response_serializer=project__pb2.GenerateLinkProjectResponse.SerializeToString,
+            ),
+            'GetByUserId': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetByUserId,
+                    request_deserializer=project__pb2.GetProjectByUserIdRequest.FromString,
+                    response_serializer=project__pb2.GetProjectByUserIdResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -359,5 +375,22 @@ class ProjectService(object):
         return grpc.experimental.unary_unary(request, target, '/project.ProjectService/GenerateLink',
             project__pb2.GenerateLinkProjectRequest.SerializeToString,
             project__pb2.GenerateLinkProjectResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetByUserId(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/project.ProjectService/GetByUserId',
+            project__pb2.GetProjectByUserIdRequest.SerializeToString,
+            project__pb2.GetProjectByUserIdResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

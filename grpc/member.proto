@@ -23,7 +23,7 @@ message MemberGetRequest {
 message MemberGetResponse {
     string name = 1;
     string email = 2;
-    string password = 3;
+    int32 id = 3;
 }
 
 message MemberCreateRequest {
