@@ -8,7 +8,7 @@ python3 -m venv env
 ./env/Scripts/pip install -e .
 
 # run migrate
-# ./env/Scripts/alembic upgrade head
+./env/Scripts/alembic upgrade head
 
 # setup rest server
 python3 -m venv ./rest/env
