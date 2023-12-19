@@ -51,3 +51,7 @@ POST {{baseUrl}}/update/task
     "id": 7,
     "status": "done"
 }
+
+
+### GET ALL MEMBER
+GET {{baseUrl}}/member

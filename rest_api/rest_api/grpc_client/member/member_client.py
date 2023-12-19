@@ -1,6 +1,6 @@
 import grpc
-import member_pb2
-import member_pb2_grpc
+import rest_api.grpc_client.member.member_pb2 as member_pb2
+import rest_api.grpc_client.member.member_pb2_grpc as member_pb2_grpc
 
 
 class MemberClient:

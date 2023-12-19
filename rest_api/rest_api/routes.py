@@ -8,3 +8,4 @@ def includeme(config):
     config.add_route("task", "/api/v1/task{action:.*}")
     config.add_route("update_task_status", "/api/v1/update/task")
     config.add_route("project_user_id", "/api/v1/projek{action:.*}")
+    config.add_route("member", "/api/v1/member{action:.*}")
