@@ -36,6 +36,8 @@ class TaskServicer(task_pb2_grpc.TaskServiceServicer):
                             title=row.title,
                             description=row.description,
                             project_id=row.project_id,
+                            date=row.date,
+                            status=row.status,
                         )
                     )
 

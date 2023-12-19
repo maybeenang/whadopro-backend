@@ -1,2 +1,53 @@
 @baseUrl = http://127.0.0.1:6543/api/v1
 
+
+### LOGIN
+POST {{baseUrl}}/login
+
+{
+    "email": "dev@maybeenang.com",
+    "password": "12345678"
+}
+
+### REGISTER
+POST {{baseUrl}}/register
+
+{
+    "name": "Elang",
+    "email": "dev@maybeenang.com",
+    "password": "12345678"
+}
+
+### LOGOUT
+POST {{baseUrl}}/logout
+
+{
+    "email": "dev@maybeenang.com"
+}
+
+### GET PROJECT
+GET {{baseUrl}}/project?userId=1
+
+
+### GET PROJECT
+GET {{baseUrl}}/projek?id=1
+
+### CREATE TASK
+POST {{baseUrl}}/task
+
+{
+    "title": "Task 1",
+    "description": "Task 1",
+    "project_id": 1,
+    "date": "2020-12-12",
+    "status": "done"
+}
+
+
+### UPDATE TASK
+POST {{baseUrl}}/update/task
+
+{
+    "id": 7,
+    "status": "done"
+}
